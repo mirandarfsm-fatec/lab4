@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog ../dbchangelog-3.0.xsd">
+
+	<changeSet id="001" author="robson.miranda">
+		<createTable tableName="FATEC_IDS">
+			<column name="TABLE_NAME" type="java.sql.Types.VARCHAR(100)">
+				<constraints nullable="false"/>	
+			</column>
+			<column name="NEXT_ID" type="java.sql.Types.BIGINT" defaultValue="100">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+		
+		<insert tableName="FATEC_IDS">	
+			<column name="TABLE_NAME" value="FATEC_ALUNO" />		
+			<column name="NEXT_ID" value="100"/>
+		</insert>
+		<insert tableName="FATEC_IDS">	
+			<column name="TABLE_NAME" value="FATEC_PROFESSOR" />		
+			<column name="NEXT_ID" value="100"/>
+		</insert>
+		<insert tableName="FATEC_IDS">	
+			<column name="TABLE_NAME" value="FATEC_DISCIPLINA" />		
+			<column name="NEXT_ID" value="100"/>
+		</insert>
+		<insert tableName="FATEC_IDS">	
+			<column name="TABLE_NAME" value="FATEC_EXERCICIO" />		
+			<column name="NEXT_ID" value="100"/>
+		</insert>
+		
+	</changeSet>
+
+</databaseChangeLog>

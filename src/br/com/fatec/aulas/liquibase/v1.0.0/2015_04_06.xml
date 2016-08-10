@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog ../dbchangelog-3.0.xsd">
+
+	<changeSet id="001" author="robson.miranda">
+		
+		<createTable tableName="FATEC_DISCIPLINA">
+			<column name="ID" type="java.sql.Types.BIGINT" >
+				<constraints primaryKey="true" primaryKeyName="PK_DISCIPLINA"/>
+			</column>
+			<column name="NOME" type="java.sql.Types.VARCHAR(255)" />
+		</createTable>
+
+		<createTable tableName="FATEC_EXERCICIO">
+			<column name="ID" type="java.sql.Types.BIGINT">
+				<constraints primaryKey="true" primaryKeyName="PK_EXERCICIO"/>
+			</column>
+			<column name="PERGUNTA" type="java.sql.Types.VARCHAR(255)" />
+			<column name="RESPOSTA" type="java.sql.Types.VARCHAR(255)" />
+			<column name="ID_DISCIPLINA" type="java.sql.Types.BIGINT">
+				<constraints foreignKeyName="FK_E_DISCIPLINA" referencedTableName="FATEC_DISCIPLINA" referencedColumnNames="ID" nullable="false"/>
+			</column>
+		</createTable>
+
+		<addColumn tableName="FATEC_PROFESSOR">
+			<column name="ID_DISCIPLINA" type="java.sql.Types.BIGINT">
+				<constraints foreignKeyName="FK_P_DISCIPLINA" referencedTableName="FATEC_DISCIPLINA" referencedColumnNames="ID" />
+			</column>
+		</addColumn>
+
+	</changeSet>
+	
+	
+	<changeSet id="002" author="robson.miranda">
+
+		<createTable tableName="FATEC_ALUNO_DISCIPLINA">
+			<column name="ID" type="java.sql.Types.BIGINT" />
+			<column name="ID_DISCIPLINA" type="java.sql.Types.BIGINT">
+				<constraints foreignKeyName="FK_AD_DISCIPLINA"
+					referencedColumnNames="ID" referencedTableName="FATEC_DISCIPLINA" />
+			</column>
+			<column name="ID_ALUNO" type="java.sql.Types.BIGINT">
+				<constraints foreignKeyName="FK_AD_ALUNO"
+					referencedColumnNames="ID" referencedTableName="FATEC_ALUNO" />
+			</column>
+		</createTable>
+
+	</changeSet>
+
+</databaseChangeLog>

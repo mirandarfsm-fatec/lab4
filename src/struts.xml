@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="p_05" extends="struts-default" namespace="/">
+		<action name="index">
+			<result>/pages/index.jsp</result>
+		</action>
+	</package>
+	<package name="administracao" extends="struts-default" namespace="/pages/administracao">
+		<action name="*!*" class="br.com.fatec.aulas.web.action.administracao.{1}AdministracaoAction" method="{2}">
+			<result name="list">{1}/list.jsp</result>
+			<result name="form">{1}/form.jsp</result>
+		</action>
+	</package>
+	<package name="login" extends="struts-default" namespace="/pages/login">
+		<action name="*!*" class="br.com.fatec.aulas.web.action.login.{1}Action" method="{2}">
+			<result name="success">{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>
